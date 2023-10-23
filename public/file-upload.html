@@ -40,10 +40,12 @@
 <!-- File Upload -->
 <div class="container" style="border: 1px solid black; border-radius: 5px;">
 <h3>File Upload</h3>
-  <form action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" name="file" id="fileInput" />
-    <button type="submit">Upload</button>
-  </form>
+  <div class="form">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" />
+      <button class="button" type="submit">Upload</button>
+    </form>
+  </div>
 </div>
 </body>
 <script src="index.js"></script>
