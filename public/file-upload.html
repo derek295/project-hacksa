@@ -25,7 +25,7 @@
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="library.html">Library</a>
+            <a class="nav-link" href="file-upload.html">Upload File</a>
           </li>
         </ul>
       </div>
@@ -34,6 +34,11 @@
 </header>
 <h1>you are browsing the Library page.</h1>
 
+<h2>File Upload</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" />
+        <button type="submit">Upload</button>
+    </form>
 </body>
 <script src="index.js"></script>
 </html>
