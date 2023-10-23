@@ -9,7 +9,8 @@
     <script src="js/jquery.js"></script>
 </head>
 <body>
-    <header></header>
+  <!-- Header -->
+    <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="../index.html">Cloud Secure</a>
@@ -32,13 +33,18 @@
     </div>
   </nav>
 </header>
+
+<!-- Title -->
 <h1>you are browsing the Library page.</h1>
 
-<h2>File Upload</h2>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" id="fileInput" />
-        <button type="submit">Upload</button>
-    </form>
+<!-- File Upload -->
+<div class="container" style="border: 1px solid black; border-radius: 5px;">
+<h3>File Upload</h3>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" id="fileInput" />
+    <button type="submit">Upload</button>
+  </form>
+</div>
 </body>
 <script src="index.js"></script>
 </html>
