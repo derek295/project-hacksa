@@ -1,10 +1,15 @@
-from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
 import os
 import cgi
 
-# Generate a random encryption key
-key = Fernet.generate_key()
-fernet = Fernet(key)
+# Load the public key
+with open("public_key.pem", "rb") as public_key_file:
+    public_key = serialization.load_pem_public_key(
+        public_key_file.read(),
+        backend=default_backend()
+    )
 
 # Directory to store encrypted files
 ENCRYPTED_FILES_DIR = "encrypted_files"
@@ -36,7 +41,7 @@ if uploaded_file:
                     chunk = uploaded_file.file.read(8192)
                     if not chunk:
                         break
-                    encrypted_chunk = fernet.encrypt(chunk)
+                    encrypted_chunk = public_key.encrypt(chunk, padding.PKCS1v15())
                     encrypted_file.write(encrypted_chunk)
             print(f"File '{original_filename}' uploaded and encrypted successfully as '{os.path.basename(encrypted_file_path)}'.")
     else:
@@ -46,7 +51,7 @@ if uploaded_file:
                 chunk = uploaded_file.file.read(8192)
                 if not chunk:
                     break
-                encrypted_chunk = fernet.encrypt(chunk)
+                encrypted_chunk = public_key.encrypt(chunk, padding.PKCS1v15())
                 encrypted_file.write(encrypted_chunk)
         print(f"File '{original_filename}' uploaded and encrypted successfully as '{os.path.basename(encrypted_file_path)}'.")
 else:
